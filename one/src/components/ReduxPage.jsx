@@ -1,6 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {addOne} from '../redux/actions/add-action.js';
+import {subOne} from '../redux/actions/sub-action.js';
 import "../App.css";
+import PropTypes from 'prop-types';
 
 class ReduxPage extends React.Component{
   constructor(props){
@@ -15,9 +19,9 @@ class ReduxPage extends React.Component{
     <h1>Hello Hello</h1>
     <div>
     <div>
-    <h3>{this.state.count}</h3>
-    <button onClick={()=>this.setState({count: this.state.count + 1})}> + </button>
-    <button onClick={()=>this.setState({count: this.state.count - 1})}> - </button>
+    <h3>{this.props.count}</h3>
+    <button onClick={()=>{this.props.addOne()}}> + </button>
+    <button onClick={()=>{this.props.subOne()}}> - </button>
     </div>
 
     <Link className="tic-tac" to="/"> Page One</Link>
@@ -30,4 +34,25 @@ class ReduxPage extends React.Component{
 
 }
 
-export default ReduxPage;
+ReduxPage.propTypes={
+  addOne: PropTypes.func,
+  count: PropTypes.object,
+  subOne: PropTypes.func
+
+};
+
+const mapStateToProps = state=>{
+  return{
+    count: state.counter.count
+  };
+};
+
+const mapDispatchToProps ={
+  addOne,
+  subOne
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+) (ReduxPage);
