@@ -48,3 +48,17 @@
 //     console.log(m, movieReviews[m]);
 // }
 
+function isPanagram(sentence){
+    let lowerCased =sentence.toLowerCase();
+    // for(let char of 'abcdefghijklmnopqrstuvwxyz'){
+    for(let char of 'abc'){
+            console.log(char);
+            if(lowerCased.indexOf[char] === -1){
+                return false;
+            }
+            else{
+                return true
+            }
+    }
+    // return true;
+}
