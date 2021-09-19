@@ -114,3 +114,127 @@ const person = {
 }
 
 // const printBio = person.printBio;
+const annoyer= {
+ phrases:["literally","cray cray", "I can't even","totes","YOLO","Can't stop won't stop"],
+ pickPhrase(){
+     const {phrases}= this;
+     const indx = Math.floor(Math.random() * phrases.length);
+     return phrases[indx]
+ },
+ start(){
+     this.timerId = setInterval(()=>{
+         console.log(this.pickPhrase());
+     },3000);
+ },
+ stop(){
+     clearInterval(this.timerId);
+     console.log("Phew");
+ }
+}
+
+// const suits =['hearts','diamonds','spades','club'];
+// const values= 'A,2,3,4,5,6,7,8,9,10,J,Q,K';
+
+
+function makeDeck(){
+    const deck = [];
+    const suits =['hearts','diamonds','spades','club'];
+    const values= 'A,2,3,4,5,6,7,8,9,10,J,Q,K';
+    for(let value of values.split(',')){
+        for(let suit of suits){
+            deck.push({
+                value,
+                suit
+            })
+        }
+    }
+    return deck;
+}
+
+// const myDeck = makeDeck();
+
+function drawCard(deck){
+    return deck.pop()
+}
+
+// const card1 = drawCard(myDeck);
+
+const myDeck = {
+    deck: [],
+    drawnCards:[],
+    suits: ['hearts','diamonds','spades','club'],
+    values: 'A,2,3,4,5,6,7,8,9,10,J,Q,K',
+    ininitializeDeck(){
+    const {suit,values,deck}=this;
+    for(let value of values.split(',')){
+        for(let suit of suits){
+            deck.push({
+                value,
+                suit
+            })
+        }
+    }
+    return deck;
+    },
+    drawCard(){
+      const card = this.deck.pop();
+      this.drawCards.push(card)
+      return card;
+    },
+    dealCards(numCards){
+        const cards = [];
+        for(let i = 0; i <numCards; i++){
+            cards.push(this.drawCard())
+        }
+        return cards;
+    },
+    shuffle(){
+        const {deck}= this;
+        for(let i =deck.length -1; i>0; i--){
+            let j = Math.floor(Math.random()*(i + 1));
+            [deck[i],deck[j]] = [deck[j], deck[i]];
+        }
+    }
+}
+
+function makeDeck(){
+ return{
+    deck: [],
+    drawnCards:[],
+    suits: ['hearts','diamonds','spades','club'],
+    values: 'A,2,3,4,5,6,7,8,9,10,J,Q,K',
+    ininitializeDeck(){
+    const {suit,values,deck}=this;
+    for(let value of values.split(',')){
+        for(let suit of suits){
+            deck.push({
+                value,
+                suit
+            })
+        }
+    }
+    return deck;
+    },
+    drawCard(){
+      const card = this.deck.pop();
+      this.drawCards.push(card)
+      return card;
+    },
+    dealCards(numCards){
+        const cards = [];
+        for(let i = 0; i <numCards; i++){
+            cards.push(this.drawCard())
+        }
+        return cards;
+    },
+    shuffle(){
+        const {deck}= this;
+        for(let i =deck.length -1; i>0; i--){
+            let j = Math.floor(Math.random()*(i + 1));
+            [deck[i],deck[j]] = [deck[j], deck[i]];
+        }
+    }
+ }
+}
+
+const bikeDeck = makeDeck();
