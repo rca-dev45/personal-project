@@ -3,6 +3,11 @@ h1{
     font-size:60px;
 }
 
+h1:hover{
+    color:purple;
+    font-size: 80px;
+}
+
 #bear-photo{
     width:250px;
 }
@@ -30,4 +35,15 @@ button{
     height: 200px;
     width: 200px;
 
+}
+
+.todo{
+    font-size:30px;
+    color: olive;
+}
+
+.done {
+    color:gray;
+    text-decoration:line-through;
+    opacity: 50%;
 }
